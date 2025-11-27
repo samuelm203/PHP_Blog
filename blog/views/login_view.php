@@ -1,5 +1,6 @@
 <?php
     require "views/templates/header.php";
+    require __DIR__ . '/../models/login_model.php';
 ?>
 
 <div class="login-container">

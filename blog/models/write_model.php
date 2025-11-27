@@ -13,11 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $image = filter_var(trim($_POST['image'] ?? ''), FILTER_SANITIZE_URL);
 
-        if (empty($_SESSION['userID']) || 'userID' === "") {
-            $userID = 1;
-        } else {
-            //Todo: UserID aus Session holen
-        }
+        $userID = $_SESSION['user_id'] ?? 0;
 
         if (empty($title) || empty($content)) {
             throw new Exception('Titel und Inhalt dürfen nicht leer sein.');

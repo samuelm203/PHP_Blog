@@ -9,7 +9,8 @@ $routes = [
     'about'             => 'views/about_view.php',
     'write'             => 'views/write_view.php',
     'login'             => 'views/login_view.php',
-    'signup'            => 'views/signup_view.php'
+    'signup'            => 'views/signup_view.php',
+    'logout'            => 'core/logout.php'
 ];
 
 if (array_key_exists($page, $routes)) {

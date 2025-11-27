@@ -241,12 +241,12 @@ footer {
     text-align: center;
     font-size: 24px;
     max-width: 70%;
-    margin: 0 auto 40px auto;
+    margin: 0 auto 29px auto;
 }
 
 .friends-grid {
     max-width: 70%;
-    margin: 50px auto;
+    margin: 15px auto;
     background: #fff;
     border: 2px solid #333;
     border-radius: 4px;

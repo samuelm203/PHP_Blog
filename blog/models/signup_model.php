@@ -44,14 +44,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             INSERT INTO user (Name, Email, Password)
             VALUES (:name, :email, :password)
         ");
+
         $stmt->execute([
             ':name' => $name,
             ':email' => $email,
             ':password' => $hashedPassword
         ]);
 
-        echo '<div class="success-message">Registration successful.</div>';
-
+        echo '<div id="success-message" class="success-message">Registration successful</div>';
+        echo '
+            <script>
+                setTimeout(function() {
+                const msg = document.getElementById("success-message");
+                if (msg) {
+                msg.style.display = "none";
+                    }
+                }, 2000);
+                setTimeout(function() {
+                    window.location.href = "login";
+                }, 2400);
+            </script>';
     } catch (Exception $e) {
         echo '<div class="error-message">' . htmlspecialchars($e->getMessage()) . '</div>';
     }

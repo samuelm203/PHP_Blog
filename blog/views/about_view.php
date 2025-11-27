@@ -17,7 +17,7 @@
                  src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"
                  alt="GitHub Logo">
             </a>
-            <a class="about-card-mysocial-link" href="https://www.linkedin.com/in/samuel-ming-7b528a261/" target="_blank">
+            <a class="about-card-mysocial-link" href="https://www.linkedin.com/" target="_blank">
                 <img width="20px"
                      src="https://www.svgrepo.com/show/110227/linkedin-big-logo.svg"
                      alt="LinkedIn Logo">
