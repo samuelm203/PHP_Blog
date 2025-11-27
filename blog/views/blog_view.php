@@ -30,48 +30,6 @@ if (!isset($posts) || !is_array($posts)) {
                 am
                 <span class="post-card-date"><?= htmlspecialchars($post["Timestamp"]) ?></span>
             </p>
-
-            
-<!--            <div class="reactions-bar" role="group" aria-label="Reactions">-->
-<!--                <button type="button" class="reaction-btn" data-emoji="👍" aria-label="Thumbs up">-->
-<!--                    <span class="emoji">👍</span>-->
-<!--                    <span class="count" aria-live="polite">0</span>-->
-<!--                </button>-->
-<!--                <button type="button" class="reaction-btn" data-emoji="❤️" aria-label="Heart">-->
-<!--                    <span class="emoji">❤️</span>-->
-<!--                    <span class="count" aria-live="polite">0</span>-->
-<!--                </button>-->
-<!--                <button type="button" class="reaction-btn" data-emoji="😂" aria-label="Funny">-->
-<!--                    <span class="emoji">😂</span>-->
-<!--                    <span class="count" aria-live="polite">0</span>-->
-<!--                </button>-->
-<!--                <button type="button" class="reaction-btn" data-emoji="😮" aria-label="Surprised">-->
-<!--                    <span class="emoji">😮</span>-->
-<!--                    <span class="count" aria-live="polite">0</span>-->
-<!--                </button>-->
-<!--                <button type="button" class="reaction-btn" data-emoji="👋" aria-label="Wave">-->
-<!--                    <span class="emoji">👋</span>-->
-<!--                    <span class="count" aria-live="polite">0</span>-->
-<!--                </button>-->
-<!--            </div>-->
-
-<!--            <div class="comments-section">-->
-<!--                <h3>Comments</h3>-->
-<!--                <ul class="comments-list"></ul>-->
-<!--                <form class="comment-form">-->
-<!--                    <div>-->
-<!--                        <label class="visually-hidden">Name</label>-->
-<!--                        <input type="text" name="name" placeholder="Your name" required>-->
-<!--                    </div>-->
-<!--                    <div>-->
-<!--                        <label class="visually-hidden">Comment</label>-->
-<!--                        <input type="text" name="comment" placeholder="Write a comment" required>-->
-<!--                    </div>-->
-<!--                    <div>-->
-<!--                        <button type="submit" class="btn primary">Add comment</button>-->
-<!--                    </div>-->
-<!--                </form>-->
-<!--            </div>-->
         </div>
     <?php endforeach; ?>
 

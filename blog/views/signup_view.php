@@ -1,5 +1,6 @@
 <?php
-require "views/templates/header.php";
+    require "views/templates/header.php";
+    require __DIR__ . '/../models/signup_model.php';
 ?>
 <div class="signup-container">
     <p class="signup-card-titel">Sign up</p>
