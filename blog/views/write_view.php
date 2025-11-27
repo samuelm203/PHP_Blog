@@ -1,11 +1,7 @@
 <?php
-    require "views/templates/header.php"
+    require "views/templates/header.php";
+    require __DIR__ . '/../models/write_model.php';
 ?>
-
-<?php
-
-?>
-
 
 <div class="container">
     <section class="write">
