@@ -29,8 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         $_SESSION['user_id'] = $user['UserId'];
 
-        // Redirect to home after successful login so nav updates
-        header('Location: blog');
+        header('Location: write ');
         exit();
     } catch (Exception $e) {
         echo '<div class="error-message">' . htmlspecialchars($e->getMessage()) . '</div>';

@@ -1,5 +1,4 @@
 <?php
-// Ensure session is started for auth-dependent navigation
 if (session_status() !== PHP_SESSION_ACTIVE) {
     session_start();
 }
@@ -7,10 +6,15 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 <header>
     <nav>
         <div class="nav-left">
-            <a href="friends" class="nav-link">BLJ</a>
+            <?php if (!empty($_SESSION['user_id'])): ?>
+            <a href="friends" class="nav-link">More Blogs</a>
             <a href="write" class="nav-link">Write</a>
             <a href="read" class="nav-link">Blog</a>
             <a href="about" class="nav-link">About me</a>
+            <?php else: ?>
+            <a href="friends" class="nav-link">More Blogs</a>
+            <a href="about" class="nav-link">About me</a>
+            <?php endif; ?>
         </div>
         <div class="nav-right">
             <?php if (!empty($_SESSION['user_id'])): ?>

@@ -2,6 +2,12 @@
 
 require_once 'core/database.php';
 
+$userID = $_SESSION['user_id'] ?? 0;
+
+if (empty($userID)) {
+    header('Location: login');
+}
+
 $pdo = connectToLocalDatabase();
 
 $stmt = $pdo->prepare("

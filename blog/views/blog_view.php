@@ -9,7 +9,7 @@ if (!isset($posts) || !is_array($posts)) {
 ?>
 
 <div class="read">
-    <div class="read-titel-banner">Read</div>
+    <div class="read-titel-banner">Read all the Blog Entrys</div>
 
     <?php foreach ($posts as $post) : ?>
         <div class="post-card">
@@ -31,6 +31,20 @@ if (!isset($posts) || !is_array($posts)) {
                 on
                 <span class="post-card-date"><?= htmlspecialchars($post["Timestamp"]) ?></span>
             </p>
+
+            <div class="comments-section">
+                <h3>Write a Comment</h3>
+                <ul class="comments-list"></ul>
+                <form class="comment-form">
+                    <div>
+                        <label class="visually-hidden">Comment</label>
+                        <input type="text" name="comment" placeholder="" required>
+                    </div>
+                    <div>
+                        <button type="submit" class="btn primary">Add comment</button>
+                    </div>
+                </form>
+            </div>
         </div>
     <?php endforeach; ?>
 

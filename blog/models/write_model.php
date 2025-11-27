@@ -2,6 +2,12 @@
 
 require_once __DIR__ . '/../core/database.php';
 
+$userID = $_SESSION['user_id'] ?? 0;
+
+if (empty($userID)) {
+    header('Location: login');
+}
+
 $message = '';
 $messageType = '';
 
@@ -15,8 +21,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $userID = $_SESSION['user_id'] ?? 0;
 
+        if (empty($userID)) {
+            throw new Exception("No User logged in");
+        }
+
         if (empty($title) || empty($content)) {
-            throw new Exception('Titel und Inhalt dürfen nicht leer sein.');
+            throw new Exception('Titel and Content cant be empty');
         }
 
         $pdo = connectToLocalDatabase();
@@ -33,12 +43,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ':userID' => $userID
         ]);
 
-        header('Location: write');
+        header('Location: read');
         exit;
 
     } catch (Exception $e) {
-        $message = 'Fehler beim Speichern des Beitrags: ' . $e->getMessage();
-        $messageType = 'error';
+        echo '<div class="error-message">' . htmlspecialchars($e->getMessage()) . '</div>';
     }
 }
 

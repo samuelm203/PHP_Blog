@@ -272,7 +272,7 @@ footer {
     border-right: none;
 }
 
-.friends-grid > .friend-card:nth-last-child(-n+1) {
+.friends-grid > .friend-card:nth-last-child(-n+3) {
     border-bottom: none;
 }
 

@@ -1,11 +1,10 @@
 <div class="container">
     <section class="hero">
-        <h1>Willkommen</h1>
+        <h1>Welcome</h1>
         <div class="button-group">
-            <a href="friends" class="btn">BLJ</a>
-            <a href="write" class="btn">Write</a>
-            <a href="read" class="btn">Blog</a>
-            <a href="about" class="btn">About Me</a>
+            <a href="friends" class="btn">Other Blogs</a>
+            <a href="login" class="btn">Login</a>
+            <a href="signup" class="btn">Sign Up</a>
         </div>
     </section>
 

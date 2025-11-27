@@ -5,7 +5,7 @@
 
 <div class="container">
     <section class="write">
-        <div class="write-title-banner">Write your Blog</div>
+        <div class="write-title-banner">Write your own Blog Entry</div>
 
         <div class="editor-card">
             <form action="" method="post">
