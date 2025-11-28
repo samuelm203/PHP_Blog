@@ -1,4 +1,4 @@
-# PHP Blog — Mini MVC
+# PHP Blog 
 
 A lightweight blogging platform built with vanilla PHP and a simple MVC-like structure. It supports user authentication, creating posts with optional images, profile pages, a friends page, and more — designed to run locally with XAMPP.
 
@@ -135,17 +135,6 @@ Note: Actual paths are defined in `routes.php`.
 3. Navigate to Profile and Friends pages.
 4. Logout and confirm protected pages redirect to Login.
 
-
-## 📸 Screenshots
-
-Add your screenshots to this section. For example:
-
-```
-![Home](images/home.png)
-![Post](images/post.png)
-```
-
-
 ## 📄 License
 
-This project is currently unlicensed. Consider adding a license (e.g., MIT) if you plan to share it publicly.
+This project is currently unlicensed.
