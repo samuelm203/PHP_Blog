@@ -23,6 +23,23 @@ header {
     top: 0;
 }
 
+.profil{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px 40px 20px;
+}
+
+.profil-titel-banner {
+    background: #fff;
+    border: 2px solid #333;
+    border-radius: 18px;
+    padding: 36px 28px;
+    text-align: center;
+    font-size: 24px;
+    max-width: 70%;
+    margin: 0 auto 40px auto;
+}
+
 nav {
     display: flex;
     justify-content: space-between;
@@ -106,6 +123,31 @@ h1 {
     background-color: #0B3C49;
     color: white;
     border-color: #0B3C49;
+}
+
+.profil-card-options {
+    display: flex;
+    gap: 16px;
+    background: #fff;
+    border: 2px solid #333;
+    border-radius: 4px;
+    padding: 20px 40px 20px;
+    max-width: 70%;
+    margin: 0 auto;
+}
+
+.profil-card-informations {
+    background: #fff;
+    border: 2px solid #333;
+    border-radius: 4px;
+    padding: 20px 40px 20px;
+    max-width: 70%;
+    margin: 20px auto;
+}
+
+.profil-card-informations-p {
+    font-size: 16px;
+    margin-bottom: 12px;
 }
 
 footer {
@@ -655,3 +697,4 @@ footer {
     from { opacity: 0; transform: translateY(-8px); }
     to { opacity: 1; transform: translateY(0); }
 }
+

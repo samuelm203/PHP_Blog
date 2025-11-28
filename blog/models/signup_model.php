@@ -51,19 +51,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ':password' => $hashedPassword
         ]);
 
-        echo '<div id="success-message" class="success-message">Registration successful</div>';
-        echo '
-            <script>
-                setTimeout(function() {
-                const msg = document.getElementById("success-message");
-                if (msg) {
-                msg.style.display = "none";
-                    }
-                }, 2000);
-                setTimeout(function() {
-                    window.location.href = "login";
-                }, 2400);
-            </script>';
+        $newUserId = $pdo->lastInsertId();
+
+        $_SESSION['user_id'] = $newUserId;
+
+        header('Location: write');
+        exit();
+
     } catch (Exception $e) {
         echo '<div class="error-message">' . htmlspecialchars($e->getMessage()) . '</div>';
     }

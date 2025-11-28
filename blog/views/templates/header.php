@@ -18,7 +18,6 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
         </div>
         <div class="nav-right">
             <?php if (!empty($_SESSION['user_id'])): ?>
-                <a href="logout" class="nav-link">Log out</a>
                 <a href="profil" class="nav-link">Profil</a>
                 <a href="blog" class="nav-link">Home</a>
             <?php else: ?>
