@@ -67,6 +67,14 @@ nav {
     justify-content: center;
 }
 
+#hero-second-titel {
+    font-size: 24px;
+    margin-bottom: 12px;
+    margin-top: 12px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
 h1 {
     font-size: 120px;
     font-weight: 300;
@@ -646,12 +654,4 @@ footer {
 @keyframes successSlideIn {
     from { opacity: 0; transform: translateY(-8px); }
     to { opacity: 1; transform: translateY(0); }
-}
-
-.hero-second-titel {
-    font-size: 24px;
-    margin-bottom: 12px;
-    margin-top: 12px;
-    text-align: center;
-    text-transform: uppercase;
 }

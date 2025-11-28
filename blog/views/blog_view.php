@@ -20,6 +20,8 @@ if (!isset($posts) || !is_array($posts)) {
                 <?php
                 if (empty($post["Image"])) {
                     echo "";
+                } else if (!(@getimagesize($post["Image"]))) {
+                    echo "";
                 } else {
                     echo '<img src="' . htmlspecialchars($post["Image"]) . '" class="post-card-img" alt="User input Image">';
                 }
@@ -32,19 +34,19 @@ if (!isset($posts) || !is_array($posts)) {
                 <span class="post-card-date"><?= htmlspecialchars($post["Timestamp"]) ?></span>
             </p>
 
-            <div class="comments-section">
-                <h3>Write a Comment</h3>
-                <ul class="comments-list"></ul>
-                <form class="comment-form">
-                    <div>
-                        <label class="visually-hidden">Comment</label>
-                        <input type="text" name="comment" placeholder="" required>
-                    </div>
-                    <div>
-                        <button type="submit" class="btn primary">Add comment</button>
-                    </div>
-                </form>
-            </div>
+<!--            <div class="comments-section">-->
+<!--                <h3>Write a Comment</h3>-->
+<!--                <ul class="comments-list"></ul>-->
+<!--                <form class="comment-form">-->
+<!--                    <div>-->
+<!--                        <label class="visually-hidden">Comment</label>-->
+<!--                        <input type="text" name="comment" placeholder="" required>-->
+<!--                    </div>-->
+<!--                    <div>-->
+<!--                        <button type="submit" class="btn primary">Add comment</button>-->
+<!--                    </div>-->
+<!--                </form>-->
+<!--            </div>-->
         </div>
     <?php endforeach; ?>
 
