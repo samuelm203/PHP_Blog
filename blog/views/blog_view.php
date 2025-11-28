@@ -20,8 +20,6 @@ if (!isset($posts) || !is_array($posts)) {
                 <?php
                 if (empty($post["Image"])) {
                     echo "";
-                } else if (!(@getimagesize($post["Image"]))) {
-                    echo "";
                 } else {
                     echo '<img src="' . htmlspecialchars($post["Image"]) . '" class="post-card-img" alt="User input Image">';
                 }

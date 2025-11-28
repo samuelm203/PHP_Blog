@@ -22,8 +22,6 @@
         echo '<div class="error-message">Error connecting to the database.</div>';
         }
     }
-
-
 ?>
 
 <div class="container">
@@ -40,6 +38,7 @@
                 <a href="friends" class="btn">Other Blogs</a>
                 <a href="login" class="btn">Login</a>
                 <a href="signup" class="btn">Sign Up</a>
+                <a href="about" class="btn">About me</a>
             </div>
         <?php else: ?>
             <div class="button-group">

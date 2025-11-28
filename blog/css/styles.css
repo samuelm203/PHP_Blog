@@ -279,7 +279,7 @@ footer {
     border-right: none;
 }
 
-.friends-grid > .friend-card:nth-last-child(-n+3) {
+.friends-grid > .friend-card:nth-last-child(-n+5) {
     border-bottom: none;
 }
 

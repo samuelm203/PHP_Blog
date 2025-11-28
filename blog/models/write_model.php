@@ -19,6 +19,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $image = filter_var(trim($_POST['image'] ?? ''), FILTER_SANITIZE_URL);
 
+        if (empty($image)) {
+            $image = null;
+        } else if (!(@getimagesize($_POST["image"]))) {
+            $image = null;
+        }
+
         $userID = $_SESSION['user_id'] ?? 0;
 
         if (empty($userID)) {
