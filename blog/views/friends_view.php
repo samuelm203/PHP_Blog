@@ -21,7 +21,7 @@ $bloggers = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <div class="friends-title-banner">BLJ</div>
 
         <div class="friends-grid">
-            <?php foreach ($bloggers as $blogger): ?>
+            <?php foreach (array_slice($bloggers, 1) as $blogger): ?>
                 <div class="friend-card">
                     <a class="friend-card-name" target="_blank"
                        href="<?= htmlspecialchars($blogger["blog_url"]) ?>"

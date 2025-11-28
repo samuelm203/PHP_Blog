@@ -20,22 +20,71 @@ header {
     border-bottom: 1px solid #ddd;
     padding: 15px 0;
     position: sticky;
+    top: 0;
 }
 
-.profil,
-.write,
-.read,
-.about,
-.friends{
+/* Container */
+.floating-group {
+    position: relative;
+    margin: 20px 0;
+}
+
+/* Input */
+.floating-group input {
+    width: 100%;
+    padding: 12px 0 8px;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    font-size: 16px;
+    background: transparent;
+}
+
+.floating-group input:focus {
+    outline: none;
+    border-bottom-color: #333;
+}
+
+/* Label */
+.floating-group label {
+    position: absolute;
+    left: 0;
+    bottom: 10px;
+    color: #777;
+    font-size: 16px;
+    pointer-events: none;
+    transition: 0.25s ease;
+}
+
+/* Floating Effekt aktiv */
+.floating-group input:focus + label,
+.floating-group input:not(:placeholder-shown) + label {
+    bottom: 34px;     /* Text wandert hoch */
+    font-size: 12px;  /* wird kleiner */
+    color: #333;
+}
+
+/* Submit Button */
+.password-submit-btn {
+    margin-top: 10px;
+    padding: 10px 15px;
+    border: none;
+    background-color: #333;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.password-submit-btn:hover {
+    background-color: #555;
+}
+
+.profil{
     max-width: 1200px;
     margin: 0 auto;
     padding: 40px 20px 40px 20px;
 }
 
-.profil-titel-banner,
-.read-titel-banner,
-.write-titel-banner,
-.about-titel-banner{
+.profil-titel-banner {
     background: #fff;
     border: 2px solid #333;
     border-radius: 18px;
@@ -163,7 +212,7 @@ footer {
     padding: 20px 40px;
     font-size: 12px;
     color: #666;
-    bottom: 0;
+    bottom: 0px;
     position: fixed;
     width: 100%;
 }
@@ -186,6 +235,23 @@ footer {
     .btn {
         width: 200px;
     }
+}
+
+.write {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px 40px 20px;
+}
+
+.write-title-banner {
+    background: #fff;
+    border: 2px solid #333;
+    border-radius: 18px;
+    padding: 36px 28px;
+    text-align: center;
+    font-size: 24px;
+    max-width: 70%;
+    margin: 0 auto 40px auto;
 }
 
 .editor-card {
@@ -264,6 +330,12 @@ footer {
     .btn { width: 100%; text-align: center; }
 }
 
+.friends {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px 40px 20px;
+}
+
 .friends-titel-banner,
 .friends-title-banner {
     background: #fff;
@@ -328,14 +400,56 @@ footer {
     .friends-grid > .friend-card:nth-last-child(-n+2) { border-bottom: none; }
 }
 
-.about-card,
-.post-card{
+.about{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px 40px 20px;
+}
+
+.about-titel-banner {
+    background: #fff;
+    border: 2px solid #333;
+    border-radius: 18px;
+    padding: 36px 28px;
+    text-align: center;
+    font-size: 24px;
+    max-width: 70%;
+    margin: 0 auto 40px auto;
+}
+
+.read {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px 40px 20px;
+}
+
+.read-titel-banner {
+    background: #fff;
+    border: 2px solid #333;
+    border-radius: 18px;
+    padding: 36px 28px;
+    text-align: center;
+    font-size: 24px;
+    max-width: 70%;
+    margin: 0 auto 40px auto;
+}
+
+.about-card {
     background: #fff;
     border: 2px solid #333;
     border-radius: 4px;
     padding: 36px 40px;
     max-width: 70%;
     margin: 0 auto;
+}
+
+.post-card {
+    background: #fff;
+    border: 2px solid #333;
+    border-radius: 4px;
+    padding: 36px 40px;
+    max-width: 70%;
+    margin: 20px auto;
 }
 
 .post-card-title {
