@@ -1,4 +1,5 @@
 <div class="container">
+    <h2 class="hero-second-titel">To write or read blogs, you need to register or log in</h2>
     <section class="hero">
         <h1>Welcome</h1>
         <div class="button-group">
