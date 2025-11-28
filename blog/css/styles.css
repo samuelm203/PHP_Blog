@@ -357,6 +357,7 @@ footer {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     box-shadow: 0 10px 20px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.06);
+    margin-bottom: 40px;
 }
 
 .friend-card {
@@ -371,12 +372,11 @@ footer {
     color: black;
 }
 
-
 .friends-grid > .friend-card:nth-child(5n) {
     border-right: none;
 }
 
-.friends-grid > .friend-card:nth-last-child(-n+5) {
+.friends-grid > .friend-card:nth-last-child(-n + 1) {
     border-bottom: none;
 }
 

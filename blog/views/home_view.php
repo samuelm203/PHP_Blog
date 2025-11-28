@@ -42,9 +42,9 @@
             </div>
         <?php else: ?>
             <div class="button-group">
-                <a href="friends" class="btn">Other Blogs</a>
                 <a href="write" class="btn">Write</a>
                 <a href="read" class="btn">Read</a>
+                <a href="profil" class="btn">My profil</a>
                 <a href="logout" class="btn">Logout</a>
             </div>
         <?php endif; ?>
