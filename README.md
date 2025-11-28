@@ -106,7 +106,7 @@ Note: Actual paths are defined in `routes.php`.
 
 ## 🛠️ Development Notes
 
-- Input is sanitized using `htmlspecialchars()` and server-side checks before DB writes.
+- Input is sanitized using `htmlspecialchars()` and server-side checks before DB writes
 - Image field for posts accepts a URL and is validated with a lightweight check via `getimagesize()`.
 - Views are kept simple and composed with `views\templates\header.php` and `views\templates\footer.php`.
 
