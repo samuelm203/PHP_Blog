@@ -46,7 +46,7 @@ try {
     </div>
 
     <div class="profil-card-informations password-box visually-hidden">
-        <form action="login" method="post">
+        <form action="" method="post">
             <div class="floating-group">
                 <input type="password" id="password-old" name="old_password" required placeholder=" ">
                 <label for="password-old">Old Password</label>

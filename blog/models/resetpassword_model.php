@@ -3,10 +3,14 @@ require_once __DIR__ . '/../core/database.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
-        $password = trim($_POST['password'] ?? '');
+        $password = trim($_POST['old_password'] ?? '');
         $newPassword = trim($_POST['new_password'] ?? '');
 
-        $email = $_SESSION['email'] ?? '';
+        $userID = $_SESSION['user_id'] ?? 0;
+
+        if (empty($userID)) {
+            throw new Exception("User not logged in.");
+        }
 
         if(empty($password) || empty($newPassword)) {
             throw new Exception('Passwords cant be empty.');
@@ -15,27 +19,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if($password !== $newPassword) {
             $pdo = connectToLocalDatabase();
 
-            $stmt = $pdo->prepare("SELECT Password FROM user WHERE Email = :email");
-            $stmt->execute([':Password' => $newPassword]);
+            $stmt = $pdo->prepare("SELECT Password FROM user WHERE UserId = :userID");
+
+            $stmt->execute([':userID' => $userID]);
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if (!$user || !password_verify($password, $user['Password'])) {
                 throw new Exception('Old Password is incorrect.');
             } else {
                 $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
-                $pdo = connectToLocalDatabase();
-                $stmt = $pdo->prepare("UPDATE user SET Password = :password WHERE Email = :email");
+                $stmt = $pdo->prepare("UPDATE user SET Password = :password WHERE UserId = :userID");
                 $stmt->execute([
                     ':password' => $hashedPassword,
-                    ':email' => $email
-                ]);                header('Location: profil');
+                    ':userID' => $userID
+                ]);
+                header('Location: profil');
                 exit;
             }
         } else {
             throw new Exception('New Password cant be the same as the old one');
         }
     } catch (Exception $e) {
-        echo $e->getMessage();
-        exit;
+        echo '<div class="error-message">' . htmlspecialchars($e->getMessage()) . '</div>';
     }
 }
