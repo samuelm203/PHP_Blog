@@ -20,16 +20,22 @@ header {
     border-bottom: 1px solid #ddd;
     padding: 15px 0;
     position: sticky;
-    top: 0;
 }
 
-.profil{
+.profil,
+.write,
+.read,
+.about,
+.friends{
     max-width: 1200px;
     margin: 0 auto;
     padding: 40px 20px 40px 20px;
 }
 
-.profil-titel-banner {
+.profil-titel-banner,
+.read-titel-banner,
+.write-titel-banner,
+.about-titel-banner{
     background: #fff;
     border: 2px solid #333;
     border-radius: 18px;
@@ -157,7 +163,7 @@ footer {
     padding: 20px 40px;
     font-size: 12px;
     color: #666;
-    bottom: 0px;
+    bottom: 0;
     position: fixed;
     width: 100%;
 }
@@ -180,23 +186,6 @@ footer {
     .btn {
         width: 200px;
     }
-}
-
-.write {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 40px 20px 40px 20px;
-}
-
-.write-title-banner {
-    background: #fff;
-    border: 2px solid #333;
-    border-radius: 18px;
-    padding: 36px 28px;
-    text-align: center;
-    font-size: 24px;
-    max-width: 70%;
-    margin: 0 auto 40px auto;
 }
 
 .editor-card {
@@ -275,12 +264,6 @@ footer {
     .btn { width: 100%; text-align: center; }
 }
 
-.friends {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 40px 20px 40px 20px;
-}
-
 .friends-titel-banner,
 .friends-title-banner {
     background: #fff;
@@ -345,56 +328,14 @@ footer {
     .friends-grid > .friend-card:nth-last-child(-n+2) { border-bottom: none; }
 }
 
-.about{
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 40px 20px 40px 20px;
-}
-
-.about-titel-banner {
-    background: #fff;
-    border: 2px solid #333;
-    border-radius: 18px;
-    padding: 36px 28px;
-    text-align: center;
-    font-size: 24px;
-    max-width: 70%;
-    margin: 0 auto 40px auto;
-}
-
-.read {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 40px 20px 40px 20px;
-}
-
-.read-titel-banner {
-    background: #fff;
-    border: 2px solid #333;
-    border-radius: 18px;
-    padding: 36px 28px;
-    text-align: center;
-    font-size: 24px;
-    max-width: 70%;
-    margin: 0 auto 40px auto;
-}
-
-.about-card {
+.about-card,
+.post-card{
     background: #fff;
     border: 2px solid #333;
     border-radius: 4px;
     padding: 36px 40px;
     max-width: 70%;
     margin: 0 auto;
-}
-
-.post-card {
-    background: #fff;
-    border: 2px solid #333;
-    border-radius: 4px;
-    padding: 36px 40px;
-    max-width: 70%;
-    margin: 20px auto;
 }
 
 .post-card-title {
@@ -481,113 +422,6 @@ footer {
     .signup-container { max-width: 90%; padding: 28px 20px; }
     .login-container form,
     .signup-container form { max-width: 100%; }
-}
-
-/* Read page: emoji scroll buttons and comments styling */
-.emoji-scroll-stack {
-    position: fixed;
-    right: 16px;
-    bottom: 96px; /* keep above footer */
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    z-index: 1000;
-}
-
-.emoji-btn {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    border: 1px solid #333;
-    background: #fff;
-    cursor: pointer;
-    font-size: 18px;
-    line-height: 1;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
-}
-
-.emoji-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 14px rgba(0,0,0,0.12);
-    background: #f8f8f8;
-}
-
-.comments-section {
-    margin-top: 16px;
-    padding-top: 16px;
-    border-top: 1px solid #e0e0e0;
-}
-
-.comments-section h3 {
-    font-size: 16px;
-    margin-bottom: 8px;
-}
-
-.comments-list {
-    list-style: none;
-    margin: 0 0 12px 0;
-    padding: 0;
-}
-
-.comment-item {
-    padding: 8px 0;
-    border-bottom: 1px dashed #ddd;
-}
-
-.comment-item:last-child {
-    border-bottom: none;
-}
-
-.comment-form input[name="name"],
-.comment-form input[name="comment"] {
-    width: 100%;
-    background: #fff;
-    border: 1px solid #333;
-    border-radius: 6px;
-    padding: 10px 12px;
-    font-size: 14px;
-    color: #222;
-}
-
-.comment-form > div { margin-bottom: 10px; }
-
-.reactions-bar {
-    display: inline-flex;
-    gap: 8px;
-    align-items: center;
-    margin: 8px 0 4px 0;
-}
-
-.reaction-btn {
-    margin-top: 9px;
-    margin-bottom: 7px;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 6px 10px;
-    border: 1px solid #333;
-    border-radius: 9999px;
-    background: #fff;
-    cursor: pointer;
-    font-size: 14px;
-    line-height: 1;
-    transition: transform 0.1s ease, box-shadow 0.15s ease, background-color 0.15s ease;
-}
-
-.reaction-btn .emoji { font-size: 16px; }
-.reaction-btn .count { min-width: 12px; text-align: center; }
-
-.reaction-btn:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.10);
-    background: #f8f8f8;
-}
-
-@media (max-width: 600px) {
-    .reactions-bar { flex-wrap: wrap; }
 }
 
 .text-image {
