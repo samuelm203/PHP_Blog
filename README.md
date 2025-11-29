@@ -1,4 +1,4 @@
-# PHP Blog — Mini MVC
+# PHP Blog 
 
 A lightweight blogging platform built with vanilla PHP and a simple MVC-like structure. It supports user authentication, creating posts with optional images, profile pages, a friends page, and more — designed to run locally with XAMPP.
 
@@ -72,20 +72,6 @@ Static counts based on the repository at the time of writing:
 - Models: 7
 - Views (including templates): 11
 
-Want up-to-date stats on your machine? Run one of the following in PowerShell from the `blog` folder:
-
-```
-# Count files by extension
-Get-ChildItem -Recurse | Group-Object { $_.Extension } | Sort-Object Count -Descending | Select-Object Count, Name
-
-# Count PHP files
-(Get-ChildItem -Recurse -Filter *.php | Measure-Object).Count
-
-# Lines of code (rough): PHP + CSS + routes + index
-(Get-ChildItem -Recurse -Include *.php,*.css | Get-Content | Measure-Object -Line).Lines
-```
-
-
 ## 🚀 Getting Started (Local with XAMPP)
 
 1. Place the project under your XAMPP `htdocs` folder as `C:\xampp\htdocs\blog`.
@@ -120,7 +106,7 @@ Note: Actual paths are defined in `routes.php`.
 
 ## 🛠️ Development Notes
 
-- Input is sanitized using `htmlspecialchars()` and server-side checks before DB writes.
+- Input is sanitized using `htmlspecialchars()` and server-side checks before DB writes
 - Image field for posts accepts a URL and is validated with a lightweight check via `getimagesize()`.
 - Views are kept simple and composed with `views\templates\header.php` and `views\templates\footer.php`.
 
@@ -135,17 +121,6 @@ Note: Actual paths are defined in `routes.php`.
 3. Navigate to Profile and Friends pages.
 4. Logout and confirm protected pages redirect to Login.
 
-
-## 📸 Screenshots
-
-Add your screenshots to this section. For example:
-
-```
-![Home](images/home.png)
-![Post](images/post.png)
-```
-
-
 ## 📄 License
 
-This project is currently unlicensed. Consider adding a license (e.g., MIT) if you plan to share it publicly.
+This project is currently unlicensed.
