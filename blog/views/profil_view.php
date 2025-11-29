@@ -67,25 +67,6 @@ try {
         </form>
     </div>
 
-    <div class="visually-hidden"
-        <?php foreach ($posts as $post) : ?>
-            <div class="post-card">
-                <h2 class="post-card-title"><?= htmlspecialchars($post["Titel"]) ?></h2>
-
-            <div class="img-p-container">
-                <p class="post-card-text"><?= htmlspecialchars($post["Content"]) ?></p>
-                <?php
-                if (empty($post["Image"])) {
-                    echo "";
-                } else {
-                    echo '<img src="' . htmlspecialchars($post["Image"]) . '" class="post-card-img" alt="User input Image">';
-                }
-                ?>
-            </div>
-            </div>
-        <?php endforeach; ?>
-    </div>
-
     <div class="profil-card-options">
         <a href="logout" class="nav-link">Log out</a>
 
@@ -116,27 +97,6 @@ try {
             passwordBox.classList.toggle("visually-hidden");
 
             profileInfoBox.classList.toggle("visually-hidden");
-        });
-    });
-
-    document.addEventListener("DOMContentLoaded", function() {
-        const seePostsLink = document.querySelector(".nav-link[href='503']:not(.change-password-box)");
-        const postsBox = document.querySelector(".visually-hidden:not(.password-box)");
-        const profileInfoBox = document.getElementById("profile-info-box");
-        const passwordBox = document.querySelector(".password-box");
-
-        if (!seePostsLink || !postsBox || !profileInfoBox) {
-            console.error("Element not found:", seePostsLink, postsBox, profileInfoBox);
-            return;
-        }
-
-        seePostsLink.addEventListener("click", function(e) {
-            e.preventDefault();
-
-            postsBox.classList.toggle("visually-hidden");
-
-            profileInfoBox.classList.add("visually-hidden");
-            passwordBox.classList.add("visually-hidden");
         });
     });
 </script>
