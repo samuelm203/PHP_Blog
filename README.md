@@ -2,7 +2,7 @@
 
 A lightweight blogging platform built with vanilla PHP and a simple MVC-like structure. It supports user authentication, creating posts with optional images, profile pages, a friends page, and more — designed to run locally with XAMPP.
 
-> Last updated: 2025-12-02 20:03 (local)
+> Last updated: 2025-12-11 21:34 (local)
 
 
 ## ✨ Features
@@ -25,6 +25,12 @@ A lightweight blogging platform built with vanilla PHP and a simple MVC-like str
 Notes:
 - No Composer or NPM package manager is used in this project at the moment.
 - Credentials are currently stored in code (see `blog\core\database.php`). See the Environment section for TODOs to externalize.
+
+## ⚠️ Wichtiger Hinweis zu Datenbank-Verbindungen (Dez 11, 2025)
+
+- Die Datenbankverbindungen und zugehörige Einstellungen wurden lokal angepasst, werden jedoch bewusst nicht in dieses Repository hochgeladen (keine sensiblen Zugangsdaten im VCS).
+- Um das Projekt lokal lauffähig zu machen, passe bitte deine Zugangsdaten in `blog\core\database.php` an oder nutze (empfohlen) Umgebungsvariablen bzw. eine nicht-versionierte Konfigurationsdatei.
+- Wenn du Pulls/Updates bekommst und eine DB‑Verbindung fehlt, ist das erwartetes Verhalten: Lege deine eigenen lokalen Credentials an.
 
 ## ✅ Requirements
 
@@ -102,6 +108,10 @@ Entry point: `blog\index.php` loads `blog\routes.php`, which includes the approp
 - Database connection is handled by `blog\core\database.php` via helpers `connectToLocalDatabase()` and `connectToDatabase()` (PDO).
 - Sessions are used to track user authentication (`$_SESSION['user_id']`).
 
+Important:
+- Local credentials are intentionally not committed. After cloning or pulling, open `blog\core\database.php` and set your own host, database name, username, and password.
+- Alternatively, externalize credentials via environment variables or a local, ignored config file (see next section).
+
 
 ## 🧭 Main Pages
 
@@ -158,6 +168,9 @@ DB_PASS=
 ```
 
 Status: TODO — not implemented yet.
+
+Non-committed local configuration:
+- Until env vars are wired up, keep your personal DB credentials only on your machine. Do not commit them. Consider adding or keeping any local config files in `.gitignore`.
 
 ## 🧪 Tests
 
