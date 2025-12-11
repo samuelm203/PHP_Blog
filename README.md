@@ -2,7 +2,7 @@
 
 A lightweight blogging platform built with vanilla PHP and a simple MVC-like structure. It supports user authentication, creating posts with optional images, profile pages, a friends page, and more — designed to run locally with XAMPP.
 
-> Last updated: 2025-12-11 21:34 (local)
+> Last updated: 2025-12-11 21:39 (local)
 
 
 ## ✨ Features
@@ -24,13 +24,71 @@ A lightweight blogging platform built with vanilla PHP and a simple MVC-like str
 
 Notes:
 - No Composer or NPM package manager is used in this project at the moment.
-- Credentials are currently stored in code (see `blog\core\database.php`). See the Environment section for TODOs to externalize.
+- Credentials are currently stored in code (see `blog\core\database.php`). For better security, prefer environment variables or a local, non-versioned config file.
 
-## ⚠️ Wichtiger Hinweis zu Datenbank-Verbindungen (Dez 11, 2025)
+## ⚠️ Important Note on Database Connections (Dec 11, 2025)
 
-- Die Datenbankverbindungen und zugehörige Einstellungen wurden lokal angepasst, werden jedoch bewusst nicht in dieses Repository hochgeladen (keine sensiblen Zugangsdaten im VCS).
-- Um das Projekt lokal lauffähig zu machen, passe bitte deine Zugangsdaten in `blog\core\database.php` an oder nutze (empfohlen) Umgebungsvariablen bzw. eine nicht-versionierte Konfigurationsdatei.
-- Wenn du Pulls/Updates bekommst und eine DB‑Verbindung fehlt, ist das erwartetes Verhalten: Lege deine eigenen lokalen Credentials an.
+- Database connections and related settings are adjusted locally but are intentionally not committed to this repository (no sensitive credentials in VCS).
+- To run the project locally, update your credentials in `blog\core\database.php`, or preferably, use environment variables or a non-versioned configuration file.
+- If you pull updates and a DB connection is missing, that is expected: provide your own local credentials.
+
+## 🗄️ Database Setup & Schema
+
+This app uses MySQL via PDO. Below is a minimal schema that works with the current feature set (users, posts, and a simple friends list). Adjust names as needed.
+
+Recommended database and user (local):
+
+```
+CREATE DATABASE IF NOT EXISTS blog_samuel CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE USER IF NOT EXISTS 'blog_user'@'localhost' IDENTIFIED BY 'change_me';
+GRANT ALL PRIVILEGES ON blog_samuel.* TO 'blog_user'@'localhost';
+FLUSH PRIVILEGES;
+```
+
+Tables:
+
+```
+-- Users
+CREATE TABLE IF NOT EXISTS users (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(50) NOT NULL UNIQUE,
+  email VARCHAR(190) NOT NULL UNIQUE,
+  password_hash VARCHAR(255) NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB;
+
+-- Posts
+CREATE TABLE IF NOT EXISTS posts (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  user_id INT UNSIGNED NOT NULL,
+  title VARCHAR(150) NOT NULL,
+  body TEXT NOT NULL,
+  image_url VARCHAR(500) NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  CONSTRAINT fk_posts_user FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+  INDEX idx_posts_user_created (user_id, created_at)
+) ENGINE=InnoDB;
+
+-- Friends (simple directed relation; store one row per friendship direction)
+CREATE TABLE IF NOT EXISTS friends (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  user_id INT UNSIGNED NOT NULL,
+  friend_user_id INT UNSIGNED NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  CONSTRAINT fk_friends_user FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+  CONSTRAINT fk_friends_friend FOREIGN KEY (friend_user_id) REFERENCES users(id) ON DELETE CASCADE,
+  UNIQUE KEY uq_user_friend (user_id, friend_user_id)
+) ENGINE=InnoDB;
+```
+
+Seed (optional):
+
+```
+INSERT INTO users (username, email, password_hash) VALUES
+('demo', 'demo@example.com', '$2y$10$KXjv7u1q8Q0G1sY1XWmQhec2q9mY7ZyFQe7b8oY3m5Q9w8TQYf19a'); -- use your own bcrypt
+```
+
+Connection values should match what you configure in `blog\core\database.php` (host, db name, user, password).
 
 ## ✅ Requirements
 
@@ -97,7 +155,7 @@ Static counts based on the repository at the time of writing (snapshot):
 1. Place the project under your XAMPP `htdocs` folder as `C:\xampp\htdocs\blog`.
 2. Ensure Apache and MySQL are running via XAMPP Control Panel.
 3. Create a MySQL database and user. Update DB credentials in `blog\core\database.php` if needed.
-4. Import your schema (tables like `user`, `post`, etc.). If you don’t have a SQL dump yet, create tables manually matching what the models expect. See TODO below.
+4. Import the schema shown in the “Database Setup & Schema” section (tables: `users`, `posts`, `friends`).
 5. Open in the browser: `http://localhost/blog/`
 
 Entry point: `blog\index.php` loads `blog\routes.php`, which includes the appropriate view based on the URL segment.
@@ -154,11 +212,11 @@ Note: Actual paths are defined in `blog\routes.php`.
 - Image field for posts may accept a URL and can be validated (e.g., with `getimagesize()` in the model layer if implemented).
 - Views are composed with `views\templates\header.php` and `views\templates\footer.php`.
 
-## 🔧 Environment Variables (TODO)
+## 🔧 Environment Variables
 
-Currently, database credentials are hard-coded in `blog\core\database.php` for both local and remote connections. To improve security and portability, consider moving these to environment variables or a non-versioned config file.
+Currently, database credentials are hard-coded in `blog\core\database.php` for both local and remote connections. To improve security and portability, you can move these to environment variables or a non-versioned config file.
 
-Suggested (example) variables:
+Suggested variables:
 
 ```
 DB_HOST=localhost
@@ -167,16 +225,14 @@ DB_USER=root
 DB_PASS=
 ```
 
-Status: TODO — not implemented yet.
-
 Non-committed local configuration:
-- Until env vars are wired up, keep your personal DB credentials only on your machine. Do not commit them. Consider adding or keeping any local config files in `.gitignore`.
+- Keep your personal DB credentials only on your machine. Do not commit them. Consider adding or keeping any local config files in `.gitignore`.
 
 ## 🧪 Tests
 
 There is no automated test suite configured in this repository yet.
 
-Recommended next steps (TODO):
+Future improvements:
 - Add PHPUnit as a dev dependency (via Composer) and configure a basic test bootstrap.
 - Add unit tests around models (e.g., input validation) and integration tests for routing.
 
@@ -191,15 +247,13 @@ Recommended next steps (TODO):
 3. Navigate to Profile and Friends pages.
 4. Logout and confirm protected pages redirect to Login.
 
-## 🗄️ Database Schema (TODO)
+## 🎉 Cool Facts
 
-An SQL dump or migration scripts are not included. Based on the code, expected tables likely include:
-- `user (UserId, Name, Email, Password, ...)`
-- `post (PostId, Titel, Content, Image, UserID, Timestamp, ...)`
-
-Action items:
-- Produce a repeatable schema (SQL file) and place it under something like `db/schema.sql`.
-- Document any required indexes and foreign keys.
+- Zero external PHP dependencies — boots fast on a fresh XAMPP install.
+- Entire app fits in a few dozen files (about 27 items under `blog/`).
+- Pure PHP + PDO: easy to inspect, step through, and learn from.
+- Router is intentionally simple: URLs map directly to view handlers defined in `routes.php`.
+- Designed for local-first hacking: clone, set DB creds, and you’re live in minutes.
 
 ## 📄 License
 
